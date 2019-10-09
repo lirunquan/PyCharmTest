@@ -21,17 +21,16 @@ class Demo(QWidget):
 
     def dragEnterEvent(self, a0: QtGui.QDragEnterEvent) -> None:
         self.setWindowTitle('mouse in')
-        print('mouse in')
-        self.label.setText(a0.mimeData().text().replace('file:///', ''))
-        print(self.label.text())
-        a0.accept()
+        print(a0.mimeData().text())
 
-    def dragMoveEvent(self, a0: QtGui.QDragLeaveEvent) -> None:
+    def dragMoveEvent(self, a0: QtGui.QDragMoveEvent) -> None:
         print('mouse move')
+        # pass
 
     def dropEvent(self, a0: QtGui.QDropEvent) -> None:
         self.setWindowTitle('mouse drop')
-        print('mouse drop')
+        self.label.setText(a0.mimeData().text().replace('file:///', ''))
+        print(a0.mimeData().text())
 
 
 if __name__ == '__main__':
