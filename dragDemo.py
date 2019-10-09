@@ -22,6 +22,7 @@ class Demo(QWidget):
     def dragEnterEvent(self, a0: QtGui.QDragEnterEvent) -> None:
         self.setWindowTitle('mouse in')
         print(a0.mimeData().text())
+        a0.accept()
 
     def dragMoveEvent(self, a0: QtGui.QDragMoveEvent) -> None:
         print('mouse move')
