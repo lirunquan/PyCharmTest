@@ -6,8 +6,8 @@
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QProgressBar, QPushButton
 import sys
-import win32con
-from win32process import SuspendThread, ResumeThread
+
+
 class Worker(QThread):
     valueChanged = pyqtSignal(int)
 
@@ -16,7 +16,7 @@ class Worker(QThread):
         for i in range(1, 101):
             print('value:', i)
             self.valueChanged.emit(i)
-            QThread.msleep(10)
+            QThread.msleep(100)
 
 
 class ThreadWindow(QWidget):
@@ -42,6 +42,7 @@ class ThreadWindow(QWidget):
             self._worker.quit()
         del self._worker
         super(ThreadWindow, self).closeEvent(event)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

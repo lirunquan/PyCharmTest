@@ -19,7 +19,9 @@ class Demo(QWidget):
         self.setLayout(self.v_layout)
 
     def open_file(self):
-        filename, _ = QFileDialog.getOpenFileName(self, 'Open File', '.', '*.apk')
+        filename, _ = QFileDialog.getOpenFileName(self, 'Open File', '.', '*.py')
+        print(type(filename))
+        print(filename, _)
         self.label.setText(filename)
 
 
